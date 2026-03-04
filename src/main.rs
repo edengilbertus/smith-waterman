@@ -8,7 +8,6 @@ fn smith_waterman(seq1: &str, seq2: &str) -> (i32, String, String) {
     let m = s1.len();
     let n = s2.len();
 
-    // Build scoring matrix (m+1) x (n+1), initialized to 0
     let mut matrix = vec![vec![0i32; n + 1]; m + 1];
     let mut max_score = 0;
     let mut max_pos = (0, 0);
@@ -27,7 +26,6 @@ fn smith_waterman(seq1: &str, seq2: &str) -> (i32, String, String) {
         }
     }
 
-    // Traceback from max_score position
     let mut aligned1 = String::new();
     let mut aligned2 = String::new();
     let (mut i, mut j) = max_pos;
@@ -50,7 +48,6 @@ fn smith_waterman(seq1: &str, seq2: &str) -> (i32, String, String) {
         }
     }
 
-    // Traceback builds strings in reverse
     let aligned1: String = aligned1.chars().rev().collect();
     let aligned2: String = aligned2.chars().rev().collect();
 
